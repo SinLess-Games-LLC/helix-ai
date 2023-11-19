@@ -23,12 +23,29 @@ jobs:
       parallel-commands: |
         npx nx-cloud record -- npx nx format:check
       parallel-commands-on-agents: |
-        npx nx affected --target=lint --parallel=3
-        npx nx affected --target=test --parallel=3 --ci --code-coverage
-        npx nx affected --target=build --parallel=3
+        npx nx affected --target=lint --parallel=3 &
+        npx nx affected --target=test --parallel=3 --ci --code-coverage &
+        npx nx affected --target=build --parallel=3 &
+        npx nx affected --target=e2e --parallel=3
 
   agents:
-    name: Nx Cloud - Agents
-    uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.13.1
-    with:
-      number-of-agents: 3
+    name: Agent ${{ matrix.agent }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # Add more agents here as your repository expands
+        agent: [ 1, 2, 3 ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use the package manager cache if available
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Start Nx Agent ${{ matrix.agent }}
+        run: npx nx-cloud start-agent
+        env:
+          NX_AGENT_NAME: ${{ matrix.agent }}
