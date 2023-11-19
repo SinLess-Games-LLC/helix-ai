@@ -6,15 +6,15 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from 'typeorm';
-import { Sex } from './enums/sex.enum';
-import { Gender } from './enums/gender.enum';
-import { Sexuality } from './enums/sexuality.enum';
-import { Pronoun } from './enums/pronoun.enum';
-import { Country } from './enums/country.enum';
-import { Microservice } from './microservice.entity';
-import { Technology } from './technology.entity';
-import { News } from './news.entity';
+} from 'typeorm'
+import { Sex } from './enums/sex.enum'
+import { Gender } from './enums/gender.enum'
+import { Sexuality } from './enums/sexuality.enum'
+import { Pronoun } from './enums/pronoun.enum'
+import { Country } from './enums/country.enum'
+import { Microservice } from './microservice.entity'
+import { Technology } from './technology.entity'
+import { News } from './news.entity'
 
 @Entity()
 /**
@@ -24,65 +24,65 @@ import { News } from './news.entity';
  */
 export class UserProfile {
   @PrimaryGeneratedColumn()
-  id: number | undefined;
+  id: number | undefined
 
   @Column({ nullable: true })
-  firstName: string | undefined;
+  firstName: string | undefined
 
   @Column({ nullable: true })
-  middleName: string | undefined;
+  middleName: string | undefined
 
   @Column({ nullable: true })
-  lastName: string | undefined;
+  lastName: string | undefined
 
   @Column({ nullable: true })
-  avatar: string | undefined;
+  avatar: string | undefined
 
   @Column({ nullable: true })
-  birthday: Date | undefined;
+  birthday: Date | undefined
 
-  @Column({ default: Sex.PreferNotToSay })
-  sex: Sex | undefined;
+  // @Column({ default: Sex.PreferNotToSay })
+  // sex: Sex | undefined;
 
-  @Column({ default: Gender.PreferNotToSay })
-  Gender: Gender | undefined;
+  @Column({ type: 'enum', enum: Gender, default: Gender.PreferNotToSay })
+  Gender: Gender | undefined
 
-  @Column({ default: Sexuality.PreferNotToSay })
-  sexualOrientation?: Sexuality | undefined;
+  @Column({ type: 'enum', enum: Sexuality, default: Sexuality.PreferNotToSay })
+  sexualOrientation?: Sexuality | undefined
 
-  @Column({ default: Pronoun.Other })
-  Pronoun: Pronoun | undefined;
+  @Column({ type: 'enum', enum: Pronoun, default: Pronoun.Other })
+  Pronoun: Pronoun | undefined
 
-  @Column({ default: Country.PreferNotToSay })
-  country: Country | undefined;
+  @Column({ type: 'enum', enum: Country, default: Country.PreferNotToSay })
+  country: Country | undefined
 
   @OneToMany(() => Microservice, (microservice) => microservice.added_by, {
     eager: true,
   })
   @JoinColumn()
-  microservices_added: Microservice[] | undefined;
+  microservices_added: Microservice[] | undefined
 
   @OneToMany(() => Technology, (technology) => technology.added_by, {
     eager: true,
   })
   @JoinColumn()
-  technologies_added: Technology[] | undefined;
+  technologies_added: Technology[] | undefined
 
   @OneToMany(() => News, (news) => news.added_by, {
     eager: true,
   })
   @JoinColumn()
-  news_added: News[] | undefined;
+  news_added: News[] | undefined
 
   @Column({ default: false })
-  email_verified: boolean | undefined;
+  email_verified: boolean | undefined
 
   @Column({ default: false })
-  age_verified: boolean | undefined;
+  age_verified: boolean | undefined
 
   @UpdateDateColumn()
-  updatedAt: Date | undefined;
+  updatedAt: Date | undefined
 
   @CreateDateColumn()
-  createdAt: Date | undefined;
+  createdAt: Date | undefined
 }

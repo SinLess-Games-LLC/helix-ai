@@ -1,9 +1,13 @@
-import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import * as dotenv from 'dotenv'
+import { Module } from '@nestjs/common'
+import { ConfigModule } from '@nestjs/config'
+import { TypeOrmModule } from '@nestjs/typeorm'
 
-dotenv.config()
+import { User } from './entities/user.entity'
+import { UserProfile } from './entities/user-profile.entity'
+import { UserSetting } from './entities/user-setting.entity'
+import { Microservice } from './entities/microservice.entity'
+import { Technology } from './entities/technology.entity'
+import { News } from './entities/news.entity'
 
 @Module({
   imports: [
@@ -23,6 +27,14 @@ dotenv.config()
       },
       metadataTableName: 'helix-orm-metadata',
     }),
+    TypeOrmModule.forFeature([
+      User,
+      UserSetting,
+      UserProfile,
+      Microservice,
+      Technology,
+      News,
+    ]),
   ],
   controllers: [],
   providers: [],
