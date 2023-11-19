@@ -20,11 +20,13 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - uses: bahmutov/npm-install@v1.8.34
+      - name: Npm Install
+        uses: bahmutov/npm-install@v1.8.36
       - run: npx nx-cloud start-ci-run --stop-agents-after="e2e"
       - run: |
           npx nx-cloud record -- npx nx format:check &
@@ -44,11 +46,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Use the package manager cache if available
-        uses: actions/setup-node@v3
+      - name: setup node
+        uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+
+      - name: Npm Install
+        uses: bahmutov/npm-install@v1.8.36
 
       - name: Start Nx Agent ${{ matrix.agent }}
         run: npx nx-cloud start-agent
