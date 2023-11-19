@@ -6,49 +6,44 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from 'typeorm';
-import { UserProfile } from './user-profile.entity';
-import slugify from 'slugify';
+} from 'typeorm'
+import { UserProfile } from './user-profile.entity'
+import slugify from 'slugify'
 
 @Entity()
-/**
- * @class Microservice
- * @description
- * A microservice is a small, independent application that performs a single function.
- */
 export class Microservice {
   @PrimaryGeneratedColumn()
-  id: number | undefined;
+  id: number | undefined
 
   @Column()
-  name: string | undefined;
+  name: string | undefined
 
   @Column('text')
-  description: string | undefined;
+  description: string | undefined
 
   @Column()
-  logo: string | undefined;
+  logo: string | undefined
 
   @ManyToOne(
     () => UserProfile,
-    (userProfile) => userProfile.microservices_added,
+    (userProfile) => userProfile.microservices_added
   )
-  added_by: number | undefined;
+  added_by: number | undefined
 
   @Column({ unique: true, default: '' })
-  slug: string | undefined;
+  slug: string | undefined
 
   @UpdateDateColumn()
-  updatedAt: Date | undefined;
+  updatedAt: Date | undefined
 
   @CreateDateColumn()
-  createdAt: Date | undefined;
+  createdAt: Date | undefined
 
   @BeforeInsert()
   async generateSlug() {
-    if (typeof this.name === "string") {
-      this.slug = slugify(this.name, "_");
+    if (typeof this.name === 'string') {
+      this.slug = slugify(this.name, '_')
     }
-    return this.slug;
+    return this.slug
   }
 }
