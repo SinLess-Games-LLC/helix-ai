@@ -30,18 +30,22 @@
 ---
 
 #### Status
-![GitHub](https://img.shields.io/github/license/SinLess-Games-LLC/Helix?style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/SinLess-Games-LLC/helix-ai?style=for-the-badge)
+
 #### Forks and Stars
-![GitHub forks](https://img.shields.io/github/forks/SinLess-Games-LLC/Helix?style=for-the-badge)
-![GitHub Repo stars](https://img.shields.io/github/stars/Sinless-Games-LLC/Helix?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/SinLess-Games-LLC/helix-ai?style=for-the-badge)
+![GitHub Repo stars](https://img.shields.io/github/stars/Sinless-Games-LLC/helix-ai?style=for-the-badge)
+
 #### Issues and Pull Requests
-![GitHub issues](https://img.shields.io/github/issues/SinLess-Games-LLC/Helix?style=for-the-badge)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/SinLess-Games-LLC/Helix?style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues/SinLess-Games-LLC/helix-ai?style=for-the-badge)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/SinLess-Games-LLC/helix-ai?style=for-the-badge)
+
 #### Contributors and Commits
-![GitHub contributors](https://img.shields.io/github/contributors/SinLess-Games-LLC/Helix?style=for-the-badge)
-![GitHub last commit](https://img.shields.io/github/last-commit/SinLess-Games-LLC/Helix?style=for-the-badge)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/SinLess-Games-LLC/Helix?style=for-the-badge)
-![GitHub repo size](https://img.shields.io/github/repo-size/SinLess-Games-LLC/Helix?style=for-the-badge)
+![GitHub contributors](https://img.shields.io/github/contributors/SinLess-Games-LLC/helix-ai?style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/SinLess-Games-LLC/helix-ai?style=for-the-badge)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/SinLess-Games-LLC/helix-ai?style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/SinLess-Games-LLC/helix-ai?style=for-the-badge)
+
 ---
 
 Helix AI is an innovative AI-powered virtual assistant meticulously crafted to redefine interconnectivity in the digital landscape.
