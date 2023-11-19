@@ -31,6 +31,8 @@
 
 #### Status
 ![GitHub](https://img.shields.io/github/license/SinLess-Games-LLC/helix-ai?style=for-the-badge)
+![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/SinLess-Games-LLC/helix-api/master?style=for-the-badge)
+
 
 #### Forks and Stars
 ![GitHub forks](https://img.shields.io/github/forks/SinLess-Games-LLC/helix-ai?style=for-the-badge)
