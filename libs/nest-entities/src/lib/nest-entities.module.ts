@@ -2,13 +2,14 @@ import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm'
 
-import { User } from './entities/user.entity'
-import { UserProfile } from './entities/user-profile.entity'
-import { UserSetting } from './entities/user-setting.entity'
-import { Microservice } from './entities/microservice.entity'
-import { Technology } from './entities/technology.entity'
-import { News } from './entities/news.entity'
-
+import {
+  User,
+  UserProfile,
+  UserSetting,
+  Microservice,
+  Technology,
+  News,
+} from '@helix-ai/entities'
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),

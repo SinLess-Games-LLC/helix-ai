@@ -1,4 +1,4 @@
-import { Technology } from '@helix-ai/nest-entities'
+import { Technology } from '@helix-ai/entities'
 
 export class MicroserviceDto {
   name: string

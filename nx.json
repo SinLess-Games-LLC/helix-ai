@@ -38,6 +38,9 @@
     "@nx/vite:test": {
       "cache": true,
       "inputs": ["default", "^production"]
+    },
+    "server": {
+      "cache": true
     }
   },
   "namedInputs": {
@@ -67,8 +70,22 @@
       },
       "library": {
         "style": "scss",
-        "linter": "eslint"
+        "linter": "eslint",
+        "unitTestRunner": "jest"
       }
+    },
+    "@nx/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nx/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nx/angular:component": {
+      "style": "scss"
     }
   },
   "nxCloudAccessToken": "MmQ5ZTJmNmEtYmViYy00MGM0LTg3MmQtZGIwNjNhMzIwMDRmfHJlYWQtd3JpdGU="

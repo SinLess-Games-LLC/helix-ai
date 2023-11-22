@@ -1,4 +1,5 @@
-import { UserSetting, UserProfile, Role } from '@helix-ai/nest-entities'
+import { UserSetting, UserProfile } from '@helix-ai/entities'
+import { Role } from '@helix-ai/entities-enums'
 
 export class UserDto {
   user_name: string

@@ -1,4 +1,4 @@
-import { TechCategory } from '@helix-ai/nest-entities'
+import { TechCategory } from '@helix-ai/entities-enums'
 
 export class CreateTechnologyDto {
   name: string

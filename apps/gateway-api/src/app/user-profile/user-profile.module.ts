@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common'
 import { UserProfileService } from './user-profile.service'
 import { UserProfileController } from './user-profile.controller'
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { UserProfile } from '@helix-ai/nest-entities'
+import { UserProfile } from '@helix-ai/entities'
 
 @Module({
   imports: [TypeOrmModule.forFeature([UserProfile])],

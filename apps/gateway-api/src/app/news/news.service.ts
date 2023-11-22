@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import { CreateNewsDto } from './dto/create-news.dto'
 import { UpdateNewsDto } from './dto/update-news.dto'
-import { News } from '@helix-ai/nest-entities'
+import { News } from '@helix-ai/entities'
 import { Repository } from 'typeorm'
 import { InjectRepository } from '@nestjs/typeorm'
 import { from } from 'rxjs'

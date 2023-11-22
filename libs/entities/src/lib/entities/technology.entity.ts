@@ -6,10 +6,10 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from 'typeorm';
-import { TechCategory } from './enums/tech-category.enum';
-import { UserProfile } from './user-profile.entity';
-import slugify from 'slugify';
+} from 'typeorm'
+import { TechCategory } from '@helix-ai/entities-enums'
+import { UserProfile } from './user-profile.entity'
+import slugify from 'slugify'
 
 @Entity()
 /**
@@ -28,53 +28,53 @@ import slugify from 'slugify';
  */
 export class Technology {
   @PrimaryGeneratedColumn()
-  id: number | undefined;
+  id: number | undefined
 
   @Column()
-  name: string | undefined;
+  name: string | undefined
 
   @Column()
-  description: string | undefined;
+  description: string | undefined
 
   @Column()
-  logo: string | undefined;
+  logo: string | undefined
 
   @Column({
     type: 'enum',
     enum: TechCategory,
     default: TechCategory.Other,
   })
-  category1: TechCategory | undefined;
+  category1: TechCategory | undefined
 
   @Column({
     type: 'enum',
     enum: TechCategory,
     default: TechCategory.Other,
   })
-  category2: TechCategory | undefined;
+  category2: TechCategory | undefined
 
   @Column()
-  website: string | undefined;
+  website: string | undefined
 
   @Column()
-  slug: string | undefined;
+  slug: string | undefined
 
   @ManyToOne(() => UserProfile, (user) => user.technologies_added, {
     cascade: true,
   })
-  added_by: number | undefined;
+  added_by: number | undefined
 
   @UpdateDateColumn()
-  updatedAt: Date | undefined;
+  updatedAt: Date | undefined
 
   @CreateDateColumn()
-  createdAt: Date | undefined;
+  createdAt: Date | undefined
 
   @BeforeInsert()
   async generateSlug() {
-    if (typeof this.name === "string") {
-      this.slug = slugify(this.name, "_");
+    if (typeof this.name === 'string') {
+      this.slug = slugify(this.name, '_')
     }
-    return this.slug;
+    return this.slug
   }
 }

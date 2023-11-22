@@ -7,11 +7,11 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from 'typeorm';
-import { UserProfile } from './user-profile.entity';
-import { UserSetting } from './user-setting.entity';
-import { Role } from './enums/roles.enum';
-import { v4 as uuidv4 } from 'uuid';
+} from 'typeorm'
+import { UserProfile } from './user-profile.entity'
+import { UserSetting } from './user-setting.entity'
+import { Role } from '@helix-ai/entities-enums'
+import { v4 as uuidv4 } from 'uuid'
 
 @Entity()
 /**
@@ -21,45 +21,45 @@ import { v4 as uuidv4 } from 'uuid';
  */
 export class User {
   @PrimaryGeneratedColumn()
-  id: number | undefined;
+  id: number | undefined
 
   @Column()
-  uuid: string | undefined;
+  uuid: string | undefined
 
   @Column({ nullable: true })
-  user_name: string | undefined;
+  user_name: string | undefined
 
   @Column()
-  email: string | undefined;
+  email: string | undefined
 
   @Column()
-  password: string | undefined;
+  password: string | undefined
 
   @Column({ type: 'enum', enum: Role, default: Role.User })
-  role: Role | undefined;
+  role: Role | undefined
 
   @Column({ nullable: true })
-  profile_id: number | undefined;
+  profile_id: number | undefined
 
   @OneToOne(() => UserProfile, { cascade: true, eager: true })
   @JoinColumn({ name: 'profile_id', referencedColumnName: 'id' })
-  profile: UserProfile | undefined;
+  profile: UserProfile | undefined
 
   @Column({ nullable: true })
-  settings_id: number | undefined;
+  settings_id: number | undefined
 
   @OneToOne(() => UserSetting, { cascade: true, eager: true })
   @JoinColumn({ name: 'settings_id', referencedColumnName: 'id' })
-  settings: UserSetting | undefined;
+  settings: UserSetting | undefined
 
   @UpdateDateColumn()
-  updatedAt: Date | undefined;
+  updatedAt: Date | undefined
 
   @CreateDateColumn()
-  createdAt: Date | undefined;
+  createdAt: Date | undefined
 
   @BeforeInsert()
   generateUUID() {
-    this.uuid = uuidv4();
+    this.uuid = uuidv4()
   }
 }

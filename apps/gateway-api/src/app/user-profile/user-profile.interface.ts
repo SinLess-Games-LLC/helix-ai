@@ -4,7 +4,7 @@ import {
   Country,
   Gender,
   Pronoun,
-} from '@helix-ai/nest-entities'
+} from '@helix-ai/entities-enums'
 
 export interface UserProfile {
   firstName?: string

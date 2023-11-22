@@ -7,11 +7,13 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm'
-import { Sex } from './enums/sex.enum'
-import { Gender } from './enums/gender.enum'
-import { Sexuality } from './enums/sexuality.enum'
-import { Pronoun } from './enums/pronoun.enum'
-import { Country } from './enums/country.enum'
+import {
+  Sex,
+  Gender,
+  Sexuality,
+  Pronoun,
+  Country,
+} from '@helix-ai/entities-enums'
 import { Microservice } from './microservice.entity'
 import { Technology } from './technology.entity'
 import { News } from './news.entity'
@@ -41,8 +43,8 @@ export class UserProfile {
   @Column({ nullable: true })
   birthday: Date | undefined
 
-  // @Column({ default: Sex.PreferNotToSay })
-  // sex: Sex | undefined;
+  @Column({ type: 'enum', enum: Sex, default: Sex.PreferNotToSay })
+  sex: Sex | undefined
 
   @Column({ type: 'enum', enum: Gender, default: Gender.PreferNotToSay })
   Gender: Gender | undefined
