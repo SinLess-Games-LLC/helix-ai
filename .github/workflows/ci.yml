@@ -31,8 +31,13 @@ jobs:
 
       - name: Npm Install
         uses: bahmutov/npm-install@v1.8.36
-      - run: npx nx-cloud start-ci-run --stop-agents-after="build"
-      - run: |
+
+      - name: Initialize the Nx Cloud distributed CI run and stop agents when the build tasks are done
+        run: npx nx-cloud start-ci-run --stop-agents-after=build
+
+
+      - name: Run commands in parallel
+        run: |
           pids=()
           # list of commands to be run on main has env flag NX_CLOUD_DISTRIBUTED_EXECUTION set to false
           NX_CLOUD_DISTRIBUTED_EXECUTION=false npx nx-cloud record -- npx nx format:check & pids+=($!)
