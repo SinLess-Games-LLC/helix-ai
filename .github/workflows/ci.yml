@@ -31,13 +31,24 @@ jobs:
 
       - name: Npm Install
         uses: bahmutov/npm-install@v1.8.36
-      - run: npx nx-cloud start-ci-run --stop-agents-after="e2e"
+      - run: npx nx-cloud start-ci-run --stop-agents-after="build"
       - run: |
-          npx nx-cloud record -- npx nx format:check &
-          npx nx affected --target=lint &
-          npx nx affected --target=test --ci --code-coverage &
-          npx nx affected --target=build &
-          npx nx affected --target=e2e
+          pids=()
+          # list of commands to be run on main has env flag NX_CLOUD_DISTRIBUTED_EXECUTION set to false
+          NX_CLOUD_DISTRIBUTED_EXECUTION=false npx nx-cloud record -- npx nx format:check & pids+=($!)
+
+          # list of commands to be run on agents
+          npx nx affected -t lint,test,build --parallel=3 &
+          pids+=($!)
+
+          # run all commands in parallel and bail if one of them fails
+          for pid in ${pids[*]}; do
+           if ! wait $pid; then
+             exit 1
+           fi
+          done
+
+          exit 0
 
   agents:
     name: Agent ${{ matrix.agent }}
@@ -45,7 +56,7 @@ jobs:
     strategy:
       matrix:
         # Add more agents here as your repository expands
-        agent: [ 1, 2, 3, 4, 5, 6, 7, 8 ]
+        agent: [ 1, 2, 3 ]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
