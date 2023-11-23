@@ -24,6 +24,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
+
+      - name: Check out the default branch
+        run: git branch --track main origin/main
 
       - name: Npm Install
         uses: bahmutov/npm-install@v1.8.36
