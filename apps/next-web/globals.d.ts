@@ -4,6 +4,7 @@ declare namespace NodeJS {
     ADMIN_USERNAME: string
     API_FOLDER_ENABLED: string
     API_JWT_SECRET: string
+    API_HOST: string
     API_PORT: string
     APP_SPECIFIER: string
     AUTH0_AUDIENCE: string
@@ -44,9 +45,6 @@ declare namespace NodeJS {
     KIBANA_PASSWORD: string
     KIBANA_PORT: string
     KIBANA_USERNAME: string
-    LAVALINK_SERVER_HOST: string
-    LAVALINK_SERVER_PASSWORD: string
-    LAVALINK_SERVER_PORT: string
     LOGSTASH_HOST: string
     LOGSTASH_PASSWORD: string
     LOGSTASH_PORT: string
@@ -68,9 +66,11 @@ declare namespace NodeJS {
     MYSQL_USER: string
     NEXTAUTH_SECRET: string
     NEXTAUTH_URL: string
+    NX_NEXT_DIR: string
     OAUTH2_REDIRECT_URL: string
     OPENAI_API_KEY: string
     OPENAI_ORG_ID: string
+    PORT: string
     RABBITMQ_HOST: string
     RABBITMQ_PASSWORD: string
     RABBITMQ_PORT: string
@@ -79,11 +79,11 @@ declare namespace NodeJS {
     REDIS_PASSWORD: string
     REDIS_PORT: string
     REDIS_USERNAME: string
-    SPOTIFY_CLIENT_ID: string
-    SPOTIFY_CLIENT_SEcRET: string
+    RENDER_INTERNAL_HOSTNAME: string
     TIMEZONE: string
     TWITCH_CLIENT_ID: string
     TWITCH_CLIENT_SECRET: string
+    VERCEL_URL: string
     VERSION: string
   }
 }

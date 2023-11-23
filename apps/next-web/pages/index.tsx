@@ -1,8 +1,6 @@
 import styles from './index.module.scss'
 import { Navbar, NavbarProps } from '@helix-ai/react-shared-ui'
 import { Box, Grid, Typography } from '@mui/material'
-import image from '../public/images/Favicon-01.png'
-import Image from 'next/image'
 import HomeCard from '../Components/home-card/HomeCard'
 
 export interface appProps {

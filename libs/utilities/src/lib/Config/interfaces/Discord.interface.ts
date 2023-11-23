@@ -1,3 +1,5 @@
+import { ConfigNetInterface } from './Net.interface'
+
 export interface ConfigDiscordInterface {
   application: {
     id: number
@@ -19,5 +21,9 @@ export interface ConfigDiscordInterface {
   testers: number[]
   oauth: {
     redirect_url: string
+  }
+  lava_link: {
+    password: string
+    net: ConfigNetInterface
   }
 }

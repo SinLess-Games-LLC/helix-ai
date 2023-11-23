@@ -9,6 +9,7 @@ import * as bcrypt from 'bcrypt'
 
 @Injectable()
 export class UserService {
+  private routes: any
   constructor(
     @InjectRepository(User)
     private readonly userRepository: Repository<User>

@@ -318,6 +318,13 @@ export class HelixConfiguration {
       oauth: {
         redirect_url: process.env.OAUTH2_REDIRECT_URL || '',
       },
+      lava_link: {
+        password: process.env.LAVALINK_SERVER_PASSWORD || '',
+        net: {
+          host: process.env.LAVALINK_SERVER_HOST || 'localhost',
+          port: parseInt(process.env.LAVALINK_SERVER_PORT) || 2333,
+        },
+      },
     }
     this.logger.Debug(`API: ${JSON.stringify(discord)}`)
     return discord

@@ -1,8 +1,9 @@
 import { AppProps } from 'next/app'
 import Head from 'next/head'
+import { trpc } from '../utils/trpc'
 import './styles.css'
 
-function CustomApp({ Component, pageProps }: AppProps) {
+function HelixApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
@@ -15,4 +16,4 @@ function CustomApp({ Component, pageProps }: AppProps) {
   )
 }
 
-export default CustomApp
+export default trpc.withTRPC(HelixApp)
