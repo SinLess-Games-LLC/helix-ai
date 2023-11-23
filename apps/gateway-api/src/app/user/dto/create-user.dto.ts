@@ -1,7 +1,7 @@
 import { PartialType } from '@nestjs/mapped-types'
-import { UserDto } from './user.dto'
+import { User } from '@helix-ai/entities'
 
-export class CreateUserDto extends PartialType(UserDto) {
+export class CreateUserDto extends PartialType(User) {
   email!: string
   password!: string
 }

@@ -14,7 +14,7 @@ export class NewsService {
   ) {}
   async create(createNewsDto: CreateNewsDto) {
     const exists = await this.newsRepository.findOne({
-      where: { title: createNewsDto.title },
+      where: { name: createNewsDto.name },
     })
 
     if (exists) {
@@ -22,11 +22,11 @@ export class NewsService {
     }
 
     const news = new News()
-    news.title = createNewsDto.title
+    news.name = createNewsDto.name
     news.description = createNewsDto.description
+    news.content = createNewsDto.content
     news.image = createNewsDto.image
     news.alt = createNewsDto.alt
-    news.content = createNewsDto.content
     news.added_by = createNewsDto.added_by
 
     return from(this.newsRepository.save(news))

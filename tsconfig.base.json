@@ -17,8 +17,8 @@
     "paths": {
       "@helix-ai/entities": ["libs/entities/src/index.ts"],
       "@helix-ai/entities-enums": ["libs/entities-enums/src/index.ts"],
-      "@helix-ai/libs/react-shared-ui": ["libs/react-shared-ui/src/index.ts"],
-      "@helix-ai/nest-entities": ["libs/nest-entities/src/index.ts"]
+      "@helix-ai/react-shared-ui": ["libs/react-shared-ui/src/index.ts"],
+      "@helix-ai/utilities": ["libs/utilities/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

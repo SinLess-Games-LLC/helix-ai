@@ -31,7 +31,9 @@ export class MicroserviceService {
     const microservice = new Microservice()
     microservice.name = createMicroserviceDto.name
     microservice.description = createMicroserviceDto.description
-    microservice.logo = createMicroserviceDto.logo
+    microservice.content = createMicroserviceDto.content
+    microservice.image = createMicroserviceDto.logo
+    microservice.alt = createMicroserviceDto.alt
     microservice.added_by = createMicroserviceDto.added_by
     return from(this.microserviceRepository.save(microservice))
   }

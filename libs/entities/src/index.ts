@@ -2,9 +2,23 @@
  *  Entities
  */
 
-export { Microservice } from './lib/entities/microservice.entity'
-export { News } from './lib/entities/news.entity'
-export { Technology } from './lib/entities/technology.entity'
-export { User } from './lib/entities/user.entity'
-export { UserProfile } from './lib/entities/user-profile.entity'
-export { UserSetting } from './lib/entities/user-setting.entity'
+export { Microservice } from './entities/microservice.entity'
+export { News } from './entities/news.entity'
+export { Technology } from './entities/technology.entity'
+export { User } from './entities/user.entity'
+export { UserProfile } from './entities/user-profile.entity'
+export { UserSetting } from './entities/user-setting.entity'
+export { Account } from './entities/account.entity'
+export { Session } from './entities/session.entity'
+
+/**
+ * Interfaces
+ *
+ * @description Interface exports for each entity
+ */
+export type { MicroserviceInterface } from './entities/microservice.entity'
+export type { NewsInterface } from './entities/news.entity'
+export type { TechnologyInterface } from './entities/technology.entity'
+export type { UserInterface } from './entities/user.entity'
+export type { UserProfileInterface } from './entities/user-profile.entity'
+export type { UserSettingInterface } from './entities/user-setting.entity'

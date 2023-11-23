@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "noEmit": false,
+    "incremental": true,
+    "isolatedModules": true,
+    "tsBuildInfoFile": "../../tmp/buildcache/apps/next-web/server",
+    "types": [
+      "node"
+    ]
+  },
+  "include": [
+    "server/**/*.ts"
+  ]
+}

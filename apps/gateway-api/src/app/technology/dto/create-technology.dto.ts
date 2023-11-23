@@ -1,17 +1,15 @@
 import { TechCategory } from '@helix-ai/entities-enums'
+import { PartialType } from '@nestjs/mapped-types'
+import { Technology } from '@helix-ai/entities'
 
-export class CreateTechnologyDto {
+export class CreateTechnologyDto extends PartialType(Technology) {
+  id: number
   name: string
-
   description: string
-
-  logo: string
-
-  category1: TechCategory
-
-  category2: TechCategory
-
+  content: string
+  image: string
+  alt: string
+  slug: string
   website: string
-
   added_by: number
 }

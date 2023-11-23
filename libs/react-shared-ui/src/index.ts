@@ -1,1 +1,2 @@
-export * from './Components/Navbar'
+export * from './lib/Navbar/Navbar'
+export * from './lib/card/Card'

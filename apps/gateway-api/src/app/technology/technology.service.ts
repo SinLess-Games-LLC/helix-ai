@@ -23,7 +23,8 @@ export class TechnologyService {
     const technology = new Technology()
     technology.name = createTechnologyDto.name
     technology.description = createTechnologyDto.description
-    technology.logo = createTechnologyDto.logo
+    technology.image = createTechnologyDto.image
+    technology.alt = createTechnologyDto.alt
     technology.category1 = createTechnologyDto.category1
     technology.category2 = createTechnologyDto.category2
     technology.website = createTechnologyDto.website
