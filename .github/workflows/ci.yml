@@ -27,7 +27,7 @@ jobs:
           cache: npm
 
       - name: Check out the default branch
-        run: git branch --track main origin/main
+        run: git branch --track main origin/master
 
       - name: Npm Install
         uses: bahmutov/npm-install@v1.8.36
