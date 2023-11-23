@@ -30,7 +30,7 @@ jobs:
         run: npm ci
 
       - name: Check out the default branch
-        run: git branch --track master origin/master
+        run: git branch --track main origin/master
 
       - name: Initialize the Nx Cloud distributed CI run and stop agents when the build tasks are done
         run: npx nx-cloud start-ci-run --stop-agents-after=build
@@ -72,7 +72,7 @@ jobs:
           package-json-path: '${{ github.workspace }}/package.json'
 
       - name: Use the package manager cache if available
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
