@@ -24,18 +24,21 @@ import {
   UserSetting,
   Account,
   Session,
-} from '@helix-ai/entities'
+  HelixConfiguration,
+} from '@helix-ai/utilities'
+
+const config = new HelixConfiguration()
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: process.env.MYSQL_HOST,
-      port: parseInt(process.env.MYSQL_PORT),
-      username: process.env.MYSQL_USER,
-      password: process.env.MYSQL_PASSWORD,
-      database: process.env.MYSQL_DATABASE,
+      host: config.database.mysql.net.host,
+      port: config.database.mysql.net.port,
+      username: config.database.mysql.user.username,
+      password: config.database.mysql.user.password,
+      database: config.database.mysql.database.name,
       autoLoadEntities: true,
       synchronize: true,
       cache: {

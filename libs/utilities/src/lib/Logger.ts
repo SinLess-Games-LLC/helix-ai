@@ -66,78 +66,83 @@ export class HelixLogger {
     }
   }
 
-  private getChalkColorHex(logColor: LogColor) {
-    switch (logColor) {
+  private logMessage(message: string, level: string) {
+    const template = `[${this.module_name}] | [${this.module_name}] | `
+    const messageColor = chalk.hex('#F0EAD6').visible(message)
+
+    switch (this.getColor(level)) {
       case LogColor.BRed:
-        return chalk.bold.hex('#FF3131')
+        return console.log(
+          chalk.bold.hex('#FF3131').visible(template) + messageColor
+        )
       case LogColor.Red:
-        return chalk.hex('#FF0000')
+        return console.log(
+          chalk.hex('#FF0000').visible(template) + messageColor
+        )
       case LogColor.ORed:
-        return chalk.hex('#FF5349')
+        return console.log(
+          chalk.hex('#FF5349').visible(template) + messageColor
+        )
       case LogColor.Yellow:
-        return chalk.hex('#FFFF00')
+        return console.log(
+          chalk.hex('#FFFF00').visible(template) + messageColor
+        )
       case LogColor.LOrange:
-        return chalk.hex('#FFA500')
+        return console.log(
+          chalk.hex('#FFA500').visible(template) + messageColor
+        )
       case LogColor.Green:
-        return chalk.hex('#00FF00')
+        return console.log(
+          chalk.hex('#00FF00').visible(template) + messageColor
+        )
       case LogColor.Blue:
-        return chalk.hex('#87CEEB')
+        return console.log(
+          chalk.hex('#87CEEB').visible(template) + messageColor
+        )
       case LogColor.Grey:
-        return chalk.hex('#808080')
+        return console.log(
+          chalk.hex('#808080').visible(template) + messageColor
+        )
       default:
-        return chalk.hex('#F0EAD6')
+        return console.log(
+          chalk.hex('#F0EAD6').visible(template) + messageColor
+        )
     }
   }
 
-  private formatMessage(message: string) {
-    const template = `[${this.module_name}] | [${this.module_name}] | `
-    const prefixColor = this.getChalkColorHex(this.getColor(this.log_level))
-    const messageColor = this.getChalkColorHex(this.getColor('default'))
-    const prefix = prefixColor(template)
-    const _message = messageColor(message)
-    return `${prefix} ${_message}`
-  }
-
-  private logMessage(message: string, level: string) {
-    this.logger.log({
-      level: level,
-      message: this.formatMessage(message),
-    })
-  }
-
   log(message: string) {
-    this.logMessage(message, 'info')
+    this.logMessage(message, '')
   }
 
   Fatal(message: string) {
-    this.logMessage(`[FATAL] ${message}`, 'fatal')
+    this.logMessage(`[FATAL] ${message}`, 'Fatal')
   }
 
   Critical(message: string) {
-    this.logMessage(`[CRITICAL] ${message}`, 'critical')
+    this.logMessage(`[CRITICAL] ${message}`, 'Critical')
   }
 
   Error(message: string) {
-    this.logMessage(`[ERROR] ${message}`, 'error')
+    this.logMessage(`[ERROR] ${message}`, 'Error')
   }
 
   Warn(message: string) {
-    this.logMessage(`[WARN] ${message}`, 'warn')
+    this.logMessage(`[WARN] ${message}`, 'Warn')
   }
 
   Alert(message: string) {
-    this.logMessage(`[ALERT] ${message}`, 'alert')
+    this.logMessage(`[ALERT] ${message}`, 'Alert')
   }
 
   Success(message: string) {
-    this.logMessage(`[SUCCESS] ${message}`, 'success')
+    this.logMessage(`[SUCCESS] ${message}`, 'Success')
   }
 
   Info(message: string) {
-    this.logMessage(`[INFO] ${message}`, 'info')
+    this.logMessage(`[INFO] ${message}`, 'Info')
   }
 
   Debug(message: string) {
-    this.logMessage(`[DEBUG] ${message}`, 'debug')
+    this.logMessage(`[DEBUG] ${message}`, 'Debug')
   }
 }

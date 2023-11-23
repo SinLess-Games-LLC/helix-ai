@@ -1,4 +1,4 @@
-import { Technology, Microservice } from '@helix-ai/entities'
+import { Technology, Microservice } from '@helix-ai/utilities'
 import { PartialType } from '@nestjs/mapped-types'
 
 export class CreateMicroserviceDto extends PartialType(Microservice) {

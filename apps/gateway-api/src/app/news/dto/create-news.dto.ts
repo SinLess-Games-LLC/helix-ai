@@ -1,4 +1,4 @@
-import { News } from '@helix-ai/entities'
+import { News } from '@helix-ai/utilities'
 import { PartialType } from '@nestjs/mapped-types'
 
 export class CreateNewsDto extends PartialType(News) {

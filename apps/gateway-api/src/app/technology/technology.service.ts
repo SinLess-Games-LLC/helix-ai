@@ -2,7 +2,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import { CreateTechnologyDto } from './dto/create-technology.dto'
 import { UpdateTechnologyDto } from './dto/update-technology.dto'
 import { Repository } from 'typeorm'
-import { Technology } from '@helix-ai/entities'
+import { Technology } from '@helix-ai/utilities'
 import { InjectRepository } from '@nestjs/typeorm'
 import { from } from 'rxjs'
 

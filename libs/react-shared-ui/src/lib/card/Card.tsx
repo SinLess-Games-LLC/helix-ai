@@ -1,9 +1,4 @@
-import styles from './Card.module.scss'
-import {
-  MicroserviceInterface,
-  NewsInterface,
-  TechnologyInterface,
-} from '@helix-ai/entities'
+// import styles from './Card.module.scss'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Image from 'next/image'

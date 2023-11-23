@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { UserProfile as userProfile } from './user-profile.interface'
 import { InjectRepository } from '@nestjs/typeorm'
-import { UserProfile } from '@helix-ai/entities'
+import { UserProfile } from '@helix-ai/utilities'
 import { Repository } from 'typeorm'
 import { from } from 'rxjs'
 

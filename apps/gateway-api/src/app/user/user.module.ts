@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common'
 import { UserService } from './user.service'
 import { UserController } from './user.controller'
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { User } from '@helix-ai/entities'
+import { User } from '@helix-ai/utilities'
 
 @Module({
   imports: [TypeOrmModule.forFeature([User])],

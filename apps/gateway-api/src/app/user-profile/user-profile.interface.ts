@@ -1,10 +1,4 @@
-import {
-  Sex,
-  Sexuality,
-  Country,
-  Gender,
-  Pronoun,
-} from '@helix-ai/entities-enums'
+import { Sex, Sexuality, Country, Gender, Pronoun } from '@helix-ai/utilities'
 
 export interface UserProfile {
   firstName?: string

@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common'
 import { TechnologyService } from './technology.service'
 import { TechnologyController } from './technology.controller'
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { Technology } from '@helix-ai/entities'
+import { Technology } from '@helix-ai/utilities'
 
 @Module({
   imports: [TypeOrmModule.forFeature([Technology])],

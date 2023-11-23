@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common'
 import { UserSettingsService } from './user-settings.service'
 import { UserSettingsController } from './user-settings.controller'
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { UserSetting } from '@helix-ai/entities'
+import { UserSetting } from '@helix-ai/utilities'
 
 @Module({
   imports: [TypeOrmModule.forFeature([UserSetting])],
