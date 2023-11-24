@@ -46,7 +46,7 @@ This document provides an overview of the technologies and tools used in the "He
     - **Considerations:** Implement middleware for authentication, request validation, and error handling.
 
 ### Databases
-- **MySQL, MongoDB, Apache Cassandra**
+- **MySQL, MongoDB**
     - **Use Case:** Choose databases that fit your data requirements, such as relational, NoSQL, or distributed databases.
     - **Considerations:** Ensure data consistency and implement efficient queries.
 
@@ -125,11 +125,6 @@ This document provides an overview of the technologies and tools used in the "He
 - **Apache Spark**
     - **Use Case:** Apache Spark is a distributed data processing framework for big data analytics.
     - **Considerations:** Design Spark jobs and optimize data processing.
-
-### NoSQL Database
-- **Apache Cassandra**
-    - **Use Case:** Apache Cassandra is a highly scalable NoSQL database for handling large datasets.
-    - **Considerations:** Design data models for efficient querying and data distribution.
 
 ## Additional Tools and Libraries
 

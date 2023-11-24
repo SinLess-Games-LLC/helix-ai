@@ -36,7 +36,7 @@ export class HelixConfiguration {
   public readonly twitch: ConfigTwitchInterface
 
   constructor() {
-    this.logger = new HelixLogger('Debug', 'Config_Module')
+    this.logger = new HelixLogger('Info', 'Config Module')
     this.api = this.loadApi()
     this.consul = this.loadConsul()
     this.database = this.loadDatabase()
@@ -53,7 +53,10 @@ export class HelixConfiguration {
     this.twitch = this.loadTwitch()
   }
 
-  private convertToBoolean(value: string, name: string) {
+  private convertToBoolean(
+    value: string | undefined,
+    name: string
+  ): boolean | undefined {
     if (value === 'true') {
       return true
     }
@@ -61,27 +64,32 @@ export class HelixConfiguration {
     if (value === 'false') {
       return false
     } else {
-      return this.logger.Error(
-        `Environment Variable ${name} is not a valid boolean`
-      )
+      this.logger.Error(`Environment Variable ${name} is not a valid boolean`)
+      return undefined // Return a default value or throw an error as needed.
     }
   }
 
-  private processListOfIds(value: string, name: string) {
-    const unprocessed = [value]
+  private processListOfIds(
+    value: string | undefined,
+    name: string
+  ): number[] | undefined {
+    const unprocessed = value ? [value] : []
     const processed: number[] = []
 
     try {
       for (const id of unprocessed) {
-        const _p = parseInt(id)
-
-        processed.push(_p)
+        const parsedId = parseInt(id)
+        if (!isNaN(parsedId)) {
+          processed.push(parsedId)
+        }
       }
+      this.logger.Info(`${processed}`)
       return processed
     } catch (error) {
-      return this.logger.Error(
-        `An error occurred with Environment Variable ${name}\n` + error
+      this.logger.Error(
+        `An error occurred with Environment Variable ${name}\n${error}`
       )
+      return undefined
     }
   }
 
@@ -104,7 +112,7 @@ export class HelixConfiguration {
     const consul: ConfigConsulInterface = {
       net: {
         host: process.env.CONSUL_HOST || 'localhost',
-        port: parseInt(process.env.CONSUL_PORT as string) || 8600,
+        port: parseInt(process.env.CONSUL_PORT) || 8600,
       },
       user: {
         username: process.env.CONSUL_USERNAME || '',

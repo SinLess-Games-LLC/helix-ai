@@ -61,6 +61,7 @@ export function Navbar(props: NavbarProps) {
             }}
             variant="square"
             src={props.logo}
+            alt="Logo"
           />
           <Typography
             variant="h6"

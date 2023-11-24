@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import { CreateMicroserviceDto } from './dto/create-microservice.dto'
 import { UpdateMicroserviceDto } from './dto/update-microservice.dto'
-import { Microservice } from '@helix-ai/utilities'
+import { Microservice } from '@helix-ai/entities'
 import { Repository } from 'typeorm'
 import { InjectRepository } from '@nestjs/typeorm'
 import { from } from 'rxjs'

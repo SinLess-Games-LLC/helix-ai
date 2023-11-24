@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common'
 import { UpdateUserSettingDto } from './dto/update-user-setting.dto'
 import { from } from 'rxjs'
 import { InjectRepository } from '@nestjs/typeorm'
-import { UserSetting } from '@helix-ai/utilities'
 import { Repository } from 'typeorm'
+import { UserSetting } from '@helix-ai/entities'
 
 @Injectable()
 export class UserSettingsService {

@@ -1,12 +1,7 @@
 import { Module } from '@nestjs/common'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
-import { TrpcModule } from '@helix-ai/trpc'
-
-/**
- * Module imports
- */
-
+import { TrpcModule, TrpcService } from '@helix-ai/trpc'
 import { AuthModule } from './auth/auth.module'
 import { MicroserviceModule } from './microservice/microservice.module'
 import { NewsModule } from './news/news.module'
@@ -16,19 +11,20 @@ import { UserProfileModule } from './user-profile/user-profile.module'
 import { UserSettingsModule } from './user-settings/user-settings.module'
 import { ConfigModule } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm'
+import { HelixConfiguration } from '@helix-ai/utilities'
+import { UserRouter } from './trpc/User.route'
+import { TrpcRouter } from './trpc/trpc.router'
+import { UserService } from './user/user.service'
 import {
+  Account,
   Microservice,
   News,
+  Session,
   Technology,
   User,
   UserProfile,
   UserSetting,
-  Account,
-  Session,
-  HelixConfiguration,
-} from '@helix-ai/utilities'
-import { UserRouter } from './trpc/User.route'
-import { TrpcRouter } from './trpc/trpc.router'
+} from '@helix-ai/entities'
 
 const config = new HelixConfiguration()
 
@@ -60,16 +56,16 @@ const config = new HelixConfiguration()
       Account,
       Session,
     ]),
+    TrpcModule,
     AuthModule,
     MicroserviceModule,
     NewsModule,
     TechnologyModule,
-    TrpcModule,
     UserModule,
     UserProfileModule,
     UserSettingsModule,
   ],
   controllers: [AppController],
-  providers: [AppService, TrpcRouter, UserRouter],
+  providers: [AppService, TrpcService, TrpcRouter, UserRouter, UserService],
 })
 export class AppModule {}

@@ -1,15 +1,10 @@
-import { INestApplication, Injectable } from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 import { TrpcService } from '@helix-ai/trpc'
 import { z } from 'zod'
-import * as trpcExpress from '@trpc/server/adapters/express'
-import { UserService } from '../user/user.service'
 
 @Injectable()
 export class UserRouter {
-  constructor(
-    private readonly trpc: TrpcService,
-    private userService: UserService
-  ) {}
+  constructor(private readonly trpc: TrpcService) {}
 
   router = this.trpc.router({
     test: this.trpc.procedure
@@ -23,25 +18,7 @@ export class UserRouter {
           message: 'Success',
         }
       }),
-
-    createUser: this.trpc.procedure
-      .input(
-        z.object({
-          email: z.string(),
-          password: z.string(),
-        })
-      )
-      .mutation(async (opts) => {
-        const savedUser = await this.userService.create({
-          email: opts.input.email,
-          password: opts.input.password,
-        })
-        return {
-          message: 'Success',
-          user: savedUser,
-        }
-      }),
   })
 }
 
-export type AppRouter = UserRouter['router']
+export type userRouter = UserRouter['router']

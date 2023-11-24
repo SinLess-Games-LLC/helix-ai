@@ -13,6 +13,10 @@ export const appRouter = router({
         greeting: `hello ${opts.input.text}`,
       }
     }),
+
+  test: procedure.mutation((req) => {
+    console.log(req.ctx)
+  }),
 })
 
 // export type definition of API

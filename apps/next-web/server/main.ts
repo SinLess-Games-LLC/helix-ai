@@ -3,6 +3,12 @@ import { parse } from 'node:url'
 import * as path from 'path'
 import next from 'next'
 import express from 'express'
+import { applyWSSHandler } from '@trpc/server/dist/adapters/ws'
+import ws from 'ws'
+import cors from 'cors'
+import { appRouter } from './routers/_app'
+import { createExpressMiddleware } from '@trpc/server/dist/adapters/express'
+import { createContext } from './context'
 
 const dir = process.env.NX_NEXT_DIR || path.join(__dirname, '..')
 const dev = process.env.NODE_ENV === 'development'
@@ -16,18 +22,28 @@ async function main() {
 
   const app = express()
 
+  console.log('Setting Up Trpc')
+  app.use(
+    '/trpc',
+    createExpressMiddleware({
+      router: appRouter,
+      createContext,
+    })
+  )
+
   // Enable CORS
+  app.use(cors({ origin: 'http://localhost:3000' }))
 
   app.all('*', (req, res) => {
     const parsedUrl = parse(req.url ?? '', true)
     handle(req, res, parsedUrl)
   })
 
-  const server = createServer(app)
+  const _server = createServer(app)
 
-  server.listen(port, hostname, () => {
-    console.log(`[ ready ] on http://${hostname}:${port}`)
-  })
+  const server = _server.listen(port, hostname)
+
+  console.log(`[ ready ] on http://${hostname}:${port}`)
 }
 
 main().catch((err) => {

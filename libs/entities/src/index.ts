@@ -22,10 +22,3 @@ export type { TechnologyInterface } from './entities/technology.entity'
 export type { UserInterface } from './entities/user.entity'
 export type { UserProfileInterface } from './entities/user-profile.entity'
 export type { UserSettingInterface } from './entities/user-setting.entity'
-
-/**
- * Enums
- *
- * @description Enums for entities
- */
-export * from '@helix-ai/entities-enums'

@@ -28,6 +28,13 @@ export const trpc = createTRPCNext<AppRouter>({
       return {
         // transformer: superjson, // optional - adds superjson serialization
         links: [
+          loggerLink(),
+          httpBatchLink({
+            url: 'http://localhost:3000/api/trpc',
+          }),
+          httpBatchLink({
+            url: 'http://localhost:3001/api/trpc',
+          }),
           httpBatchLink({
             url: '/api/trpc',
           }),
@@ -37,7 +44,6 @@ export const trpc = createTRPCNext<AppRouter>({
     return {
       // transformer: superjson, // optional - adds superjson serialization
       links: [
-        loggerLink(),
         httpBatchLink({
           // The server needs to know your app's full url
           url: `${getBaseUrl()}/api/trpc`,

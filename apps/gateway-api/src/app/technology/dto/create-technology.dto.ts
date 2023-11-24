@@ -1,5 +1,6 @@
 import { PartialType } from '@nestjs/mapped-types'
-import { Technology } from '@helix-ai/utilities'
+import { Technology } from '@helix-ai/entities'
+import { TechCategory } from '@helix-ai/entities-enums'
 
 export class CreateTechnologyDto extends PartialType(Technology) {
   id: number
@@ -11,4 +12,6 @@ export class CreateTechnologyDto extends PartialType(Technology) {
   slug: string
   website: string
   added_by: number
+  category1: TechCategory
+  category2: TechCategory
 }
