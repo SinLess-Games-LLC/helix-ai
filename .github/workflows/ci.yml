@@ -14,46 +14,13 @@ permissions:
 jobs:
   main:
     name: Nx Cloud - Main Job
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Check out the default branch
-        run: git branch --track main origin/master
-
-      - name: Initialize the Nx Cloud distributed CI run and stop agents when the build tasks are done
-        run: npx nx-cloud start-ci-run --stop-agents-after=build
-
-
-      - name: Run commands in parallel
-        run: |
-          pids=()
-          # list of commands to be run on main has env flag NX_CLOUD_DISTRIBUTED_EXECUTION set to false
-          NX_CLOUD_DISTRIBUTED_EXECUTION=false npx nx-cloud record -- npx nx format:check & pids+=($!)
-
-          # list of commands to be run on agents
-          npx nx affected -t lint,test,e2e,build --parallel=3 &
-          pids+=($!)
-
-          # run all commands in parallel and bail if one of them fails
-          for pid in ${pids[*]}; do
-           if ! wait $pid; then
-             exit 1
-           fi
-          done
-
-          exit 0
+    uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.13.0
+    with:
+      number-of-agents: 3
+      parallel-commands: |
+        npx nx-cloud record -- npx nx format:check
+      parallel-commands-on-agents: |
+        npx nx affected -t lint,test,build --parallel=2
 
   agents:
     name: Nx Cloud - Agents
