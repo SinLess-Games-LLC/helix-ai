@@ -54,7 +54,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --force
 
       - name: Check out the default branch
         run: git branch --track main origin/main
@@ -107,7 +107,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --force
 
       - name: Start Nx Agent ${{ matrix.agent }}
         run: npx nx-cloud start-agent
