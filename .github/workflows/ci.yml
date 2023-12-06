@@ -23,6 +23,9 @@ jobs:
     name: Nx Cloud - Main Job
     runs-on: ubuntu-latest
     steps:
+      - name: Clear npm cache
+        run: npm cache clean --force
+        
       - uses: actions/checkout@v4
         name: Checkout [Pull Request]
         if: ${{ github.event_name == 'pull_request' }}
