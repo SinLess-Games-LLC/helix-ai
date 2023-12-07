@@ -2,7 +2,11 @@
   "name": "@helix-ai/entities",
   "version": "0.0.1",
   "dependencies": {
-    "tslib": "^2.6.2"
+    "@helix-ai/entities-enums": "^0.0.1",
+    "slugify": "^1.6.6",
+    "tslib": "^2.6.2",
+    "typeorm": "^0.3.17",
+    "uuid": "^9.0.1"
   },
   "type": "commonjs",
   "main": "./src/index.js",

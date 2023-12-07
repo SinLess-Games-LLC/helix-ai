@@ -6,7 +6,7 @@ import {
   OneToMany,
   ValueTransformer,
 } from 'typeorm'
-import { User } from '@helix-ai/entities'
+import { User } from './user.entity'
 
 const transformer: Record<'date' | 'bigint', ValueTransformer> = {
   date: {
