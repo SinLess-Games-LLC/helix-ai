@@ -26,7 +26,7 @@ jobs:
       - name: Delete node_modules folder
         run: |
           sudo rm -rf /home/runner/work/helix-ai/helix-ai/node_modules
-          
+
       - uses: actions/checkout@v4
         name: Checkout [Pull Request]
         if: ${{ github.event_name == 'pull_request' }}
@@ -49,13 +49,13 @@ jobs:
           package-json-path: '${{ github.workspace }}/package.json'
 
       - name: Use the package manager cache if available
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm i
+        run: npm i @nx/nx-linux-x64-gnu
 
       - name: Check out the default branch
         run: git branch --track main origin/main
@@ -93,7 +93,7 @@ jobs:
       - name: Delete node_modules folder
         run: |
           sudo rm -rf /home/runner/work/helix-ai/helix-ai/node_modules
-          
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -109,7 +109,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm i
+        run: npm i @nx/nx-linux-x64-gnu
 
       - name: Start Nx Agent ${{ matrix.agent }}
         run: npx nx-cloud start-agent
