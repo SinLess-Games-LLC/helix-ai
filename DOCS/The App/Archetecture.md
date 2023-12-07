@@ -7,23 +7,26 @@ The Helix AI app is designed with a modern and scalable architecture to provide 
 At a high level, the architecture of the Helix AI app can be categorized into the following components:
 
 1. **Front-End (Next.js):**
-    - The user interface and client-side logic are built using Next.js, a popular React framework.
-    - Next.js allows for server-side rendering (SSR) and client-side rendering, providing a responsive and fast user experience.
-    - It communicates with the back-end APIs to fetch and display data to users.
+
+   - The user interface and client-side logic are built using Next.js, a popular React framework.
+   - Next.js allows for server-side rendering (SSR) and client-side rendering, providing a responsive and fast user experience.
+   - It communicates with the back-end APIs to fetch and display data to users.
 
 2. **Back-End (Nest.js):**
-    - The back-end services and APIs are developed using Nest.js, a TypeScript-based Node.js framework.
-    - Nest.js facilitates the creation of scalable and maintainable server-side applications.
-    - It handles user authentication, business logic, and database interactions.
+
+   - The back-end services and APIs are developed using Nest.js, a TypeScript-based Node.js framework.
+   - Nest.js facilitates the creation of scalable and maintainable server-side applications.
+   - It handles user authentication, business logic, and database interactions.
 
 3. **Databases:**
-    - The app uses a combination of relational databases and NoSQL databases to store and manage data efficiently.
-    - Relational databases like MySQL and PostgreSQL are employed for structured data storage, such as user profiles and configurations.
-    - NoSQL databases like MongoDB and Cassandra are used for handling unstructured data, including user-generated content and logs.
+
+   - The app uses a combination of relational databases and NoSQL databases to store and manage data efficiently.
+   - Relational databases like MySQL and PostgreSQL are employed for structured data storage, such as user profiles and configurations.
+   - NoSQL databases like MongoDB and Cassandra are used for handling unstructured data, including user-generated content and logs.
 
 4. **In-Memory Caches (Redis):**
-    - Redis, an in-memory data store, is utilized for caching frequently accessed data to reduce latency and improve response times.
-    - It caches data retrieved from databases and expensive computations to minimize the load on the database servers.
+   - Redis, an in-memory data store, is utilized for caching frequently accessed data to reduce latency and improve response times.
+   - It caches data retrieved from databases and expensive computations to minimize the load on the database servers.
 
 ## Low-Level Views
 
@@ -56,16 +59,17 @@ The back-end architecture includes the following aspects:
 The database architecture is divided into two categories:
 
 1. **Relational Databases (MySQL, PostgreSQL):**
-    - Tables: Each table represents a specific entity, and relationships between tables are defined.
-    - SQL Queries: Structured Query Language (SQL) is used for data retrieval, insertion, and manipulation.
-    - Indexing: Indexes are created to optimize query performance.
-    - Transactions: ACID (Atomicity, Consistency, Isolation, Durability) properties are ensured for data integrity.
+
+   - Tables: Each table represents a specific entity, and relationships between tables are defined.
+   - SQL Queries: Structured Query Language (SQL) is used for data retrieval, insertion, and manipulation.
+   - Indexing: Indexes are created to optimize query performance.
+   - Transactions: ACID (Atomicity, Consistency, Isolation, Durability) properties are ensured for data integrity.
 
 2. **NoSQL Databases (MongoDB, Cassandra):**
-    - Collections (MongoDB) or Column Families (Cassandra): Data is stored in collections or column families, allowing flexibility in schema design.
-    - NoSQL Queries: Databases support NoSQL queries for unstructured or semi-structured data.
-    - Scalability: Horizontal scaling is achieved to handle large datasets and high read/write loads.
-    - Data Replication: Replication strategies are implemented to ensure data availability and fault tolerance.
+   - Collections (MongoDB) or Column Families (Cassandra): Data is stored in collections or column families, allowing flexibility in schema design.
+   - NoSQL Queries: Databases support NoSQL queries for unstructured or semi-structured data.
+   - Scalability: Horizontal scaling is achieved to handle large datasets and high read/write loads.
+   - Data Replication: Replication strategies are implemented to ensure data availability and fault tolerance.
 
 ### In-Memory Caches (Redis)
 

@@ -1,5 +1,4 @@
-import { HelixLogger } from '@helix-ai/utilities'
-import * as process from 'process'
+import { HelixLogger } from '../Logger'
 import * as dotenv from 'dotenv'
 import { ConfigApiInterface } from './interfaces/Api.interface'
 import { ConfigConsulInterface } from './interfaces/Consul.interface'

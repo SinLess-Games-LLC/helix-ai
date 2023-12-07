@@ -6,23 +6,17 @@
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/entities-enums",
         "main": "libs/entities-enums/src/index.ts",
         "tsConfig": "libs/entities-enums/tsconfig.lib.json",
-        "assets": [
-          "libs/entities-enums/*.md"
-        ]
+        "assets": ["libs/entities-enums/*.md"]
       }
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
           "libs/entities-enums/**/*.ts",

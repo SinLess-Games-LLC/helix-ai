@@ -5,6 +5,7 @@ We appreciate your interest in contributing to the Helix AI project. By contribu
 ## Table of Contents
 
 1. [Getting Started](#getting-started)
+
    - [Prerequisites](#prerequisites)
    - [Setting Up the Development Environment](#setting-up-the-development-environment)
    - [Forking the Repository](#forking-the-repository)
@@ -15,8 +16,8 @@ We appreciate your interest in contributing to the Helix AI project. By contribu
    - [Issues and Bug Reports](#issues-and-bug-reports)
    - [Feature Requests](#feature-requests)
    - [Pull Requests](#pull-requests)
-   
 3. [Development Workflow](#development-workflow)
+
    - [Branches](#branches)
    - [Coding Standards](#coding-standards)
    - [Testing](#testing)

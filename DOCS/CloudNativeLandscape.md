@@ -1,4 +1,3 @@
-
 ## Databases
 
 - mysql
@@ -25,7 +24,7 @@
 - kubernetes
 - k3s
 
-## Coordination & Service Discovery 
+## Coordination & Service Discovery
 
 - etcd
 - CoreDNS
@@ -104,4 +103,3 @@
 ## Continutous Integration
 
 - Jenkins
-

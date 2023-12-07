@@ -1,4 +1,3 @@
-import chalk from 'chalk'
 import * as winston from 'winston'
 import { LogEntry } from 'winston'
 

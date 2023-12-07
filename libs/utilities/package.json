@@ -2,7 +2,9 @@
   "name": "@helix-ai/utilities",
   "version": "0.0.1",
   "dependencies": {
-    "tslib": "^2.6.2"
+    "dotenv": "^16.3.1",
+    "tslib": "^2.6.2",
+    "winston": "^3.11.0"
   },
   "type": "commonjs",
   "main": "./src/index.js",
