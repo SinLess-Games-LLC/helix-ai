@@ -23,6 +23,9 @@ jobs:
     name: Nx Cloud - Main Job
     runs-on: ubuntu-latest
     steps:
+      - name: Delete node_modules
+        run: |
+          sudo rm -rf /home/runner/work/helix-ai/helix-ai/node_modules
       - uses: actions/checkout@v4
         name: Checkout [Pull Request]
         if: ${{ github.event_name == 'pull_request' }}
