@@ -111,7 +111,7 @@ jobs:
       - name: Install dependencies
         run: npm i @nx/nx-linux-x64-gnu
 
-      - name: Start Nx Agent ${{ matrix.agent }}
-        run: npx nx-cloud start-agent
-        env:
-          NX_AGENT_NAME: ${{ matrix.agent }}
+      - name: Nx Cloud - Agents
+        uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.14.0
+        with:
+          number-of-agents: 3
