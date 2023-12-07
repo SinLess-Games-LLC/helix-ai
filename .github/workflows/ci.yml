@@ -23,9 +23,10 @@ jobs:
     name: Nx Cloud - Main Job
     runs-on: ubuntu-latest
     steps:
-      - name: Delet node_modules folder
+      - name: Delete node_modules folder
         run: |
           sudo rm -rf /home/runner/work/helix-ai/helix-ai/node_modules
+          
       - uses: actions/checkout@v4
         name: Checkout [Pull Request]
         if: ${{ github.event_name == 'pull_request' }}
@@ -89,6 +90,10 @@ jobs:
         # Add more agents here as your repository expands
         agent: [1, 2, 3]
     steps:
+      - name: Delete node_modules folder
+        run: |
+          sudo rm -rf /home/runner/work/helix-ai/helix-ai/node_modules
+          
       - name: Checkout
         uses: actions/checkout@v4
 
