@@ -43,7 +43,9 @@ jobs:
         run: npm cache clean --force
 
       - name: remove node_modules
-        run: rm -rf /home/runner/work/helix-ai/helix-ai/node_modules
+        run: |
+          sudo rm -rf /home/runner/work/helix-ai/helix-ai/node_modules && \
+          sudo rm -rf node_modules
 
       - name: Ensure use of latest npm
         run: npm install -g npm@latest
@@ -107,7 +109,9 @@ jobs:
         run: npm cache clean --force
 
       - name: remove node_modules
-        run: rm -rf /home/runner/work/helix-ai/helix-ai/node_modules
+        run: |
+          sudo rm -rf /home/runner/work/helix-ai/helix-ai/node_modules && \
+          sudo rm -rf node_modules
 
       - name: Ensure use of latest npm
         run: npm install -g npm@latest
