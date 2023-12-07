@@ -55,7 +55,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci @nx/nx-linux-x64-gnu
+        run: npm ci
 
       - name: Check out the default branch
         run: git branch --track main origin/master
@@ -85,6 +85,10 @@ jobs:
   agent:
     name: Nx Cloud - Agent Job
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # Add more agents here as your repository expands
+        agent: [ 1, 2, 3 ]
     steps:
       - name: Delete node_modules folder
         run: |
