@@ -18,11 +18,15 @@ jobs:
     steps:
       - name: Delete node_modules
         run: sudo rm -rf /home/runner/work/helix-ai/helix-ai/node_modules
+
+      - name: Clean npm cache
+        run: npm cache clean -f
   main:
     needs: setup
     name: Nx Cloud - Main Job
     uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.14.0
     with:
+      node-version: 20.x
       main-branch-name: master
       number-of-agents: 3
       init-commands: |
