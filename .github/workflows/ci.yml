@@ -55,7 +55,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm i @nx/nx-linux-x64-gnu
+        run: npm ci @nx/nx-linux-x64-gnu
 
       - name: Check out the default branch
         run: git branch --track main origin/master
@@ -81,3 +81,33 @@ jobs:
           done
 
           exit 0
+
+  agent:
+    name: Nx Cloud - Agent Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete node_modules folder
+        run: |
+          sudo rm -rf /home/runner/work/helix-ai/helix-ai/node_modules
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Set node/npm/yarn versions using volta
+      - uses: volta-cli/action@v4
+        with:
+          package-json-path: '${{ github.workspace }}/package.json'
+
+      - name: Use the package manager cache if available
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Start Nx Agent ${{ matrix.agent }}
+        run: npx nx-cloud start-agent
+        env:
+          NX_AGENT_NAME: ${{ matrix.agent }}
