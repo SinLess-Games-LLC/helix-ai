@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Delete node_modules
-        run: sudo rm -rf node_modules
+        run: sudo rm -rf /home/runner/work/helix-ai/helix-ai/node_modules
   main:
     needs: setup
     name: Nx Cloud - Main Job
