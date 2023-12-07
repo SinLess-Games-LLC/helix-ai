@@ -21,7 +21,7 @@ env:
 jobs:
   main:
     name: Nx Cloud - Main Job
-    runs-on: self-hosted
+    runs-on: ubuntu
     steps:
       - uses: actions/checkout@v4
         name: Checkout [Pull Request]
@@ -80,7 +80,7 @@ jobs:
 
   agents:
     name: Agent ${{ matrix.agent }}
-    runs-on: self-hosted
+    runs-on: ubuntu
     strategy:
       matrix:
         # Add more agents here as your repository expands
