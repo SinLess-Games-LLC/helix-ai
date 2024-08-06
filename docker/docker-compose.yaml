@@ -1,0 +1,6 @@
+name: 'Helix Ai'
+
+networks:
+  helix:
+    driver: bridge
+
