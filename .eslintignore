@@ -1,0 +1,25 @@
+# Ignore editor config files
+.editorconfig
+.eslintrc.json
+.prettierignore
+.prettierrc
+
+# Ignore Git and CI files
+.gitignore
+.github/
+
+# Ignore configuration files
+*.json
+*.yaml
+*.yml
+
+# Ignore readme files
+README.md
+*.md
+
+# Ignore specific directories
+node_modules/
+dist/
+build/
+
+.verdaccio

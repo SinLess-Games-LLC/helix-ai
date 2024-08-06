@@ -1,0 +1,33 @@
+{
+  "markdownlint.config": {
+    "default": true,
+    "MD003": { "style": "atx" },
+    "MD007": { "indent": 4 },
+    "MD033": {
+      "allowed_elements": [
+        "div",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "img",
+        "br",
+        "a",
+        "img"
+      ]
+    },
+    "md034": false,
+    "MD041": false,
+    "no-hard-tabs": false,
+    "whitespace": false
+  },
+  "cSpell.words": [
+    "bitnami",
+    "Buildable",
+    "commitlint",
+    "Intelli",
+    "interconnectivity",
+    "Streamlabs",
+    "transformative"
+  ]
+}
