@@ -1,0 +1,7 @@
+instances:
+  - name: helix-dc-1
+  - name: vault-server
+  - name: consul-server-1
+  - name: consul-server-2
+  - name: consul-server-3
+  - name: krakend

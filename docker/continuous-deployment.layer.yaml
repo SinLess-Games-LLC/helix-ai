@@ -1,0 +1,37 @@
+services:
+  argoCD:
+    image: argoproj/argocd
+    container_name: argocd-server
+    volumes:
+      - ./argocd/config:/argocd/config
+      - ./certs:/etc/ssl/certs
+    environment:
+      - ARGOCD_OPTS=--server.insecure
+    command: [
+      "argocd-server",
+      "--staticassets",
+      "/shared/app",
+      "--insecure",
+      "--dex-server",
+      "http://dex:5556",
+      "--redis",
+      "redis:6379"
+    ]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  dex:
+    image: dexidp/dex:v2.27.0
+    container_name: dex
+    volumes:
+      - ./dex/config:/etc/dex
+    networks:
+      - helix
+    command: [
+      "dex",
+      "serve",
+      "/etc/dex/cfg/config.yaml"
+    ]

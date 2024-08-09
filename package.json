@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "commit": "commit"
+    "commit": "commit",
+    "format": "prettier --write \"**/*.{ts,js,json,html,scss,css,md}\""
   },
   "private": true,
   "devDependencies": {
@@ -84,10 +85,25 @@
       "@commitlint/config-conventional"
     ],
     "rules": {
-      "body-leading-blank": [1, "never"],
-      "header-case": [2, "always", "start-case"],
-      "type-case": [2, "always", "start-case"],
-      "scope-case": [2, "always", "start-case"]
+      "body-leading-blank": [
+        1,
+        "never"
+      ],
+      "header-case": [
+        2,
+        "always",
+        "start-case"
+      ],
+      "type-case": [
+        2,
+        "always",
+        "start-case"
+      ],
+      "scope-case": [
+        2,
+        "always",
+        "start-case"
+      ]
     }
   },
   "nx": {

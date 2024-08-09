@@ -1,6 +1,253 @@
-name: 'Helix Ai'
+name: "helix-ai"
 
 networks:
   helix:
     driver: bridge
 
+# Ports Used:
+# - Database Layer: 3306
+# - Logging and Monitoring Layer: 24224, 9090, 3000, 9200, 9300, 5601, 2181
+# - Service Discovery: 8300, 8500, 8600
+# - API Gateway: 8080
+# - Cache Layer: 6379, 8001
+# - Event Bus: 9092, 29092
+# - Security and Secret management: 8200, 26379
+# - CD (Continuous Deployment) layer: 8081, 5556
+#
+# Ports in order of port number (ascending):
+# - 2181, 3306, 556, 5601, 6379, 8001, 8080, 8080, 8200, 8300, 8500, 8600,
+# - 9090, 9092, 9200, 9300, 24224
+#
+# Nomber of ports: 16
+
+services:
+  bootstrap: &bootstrap
+    extends:
+      file: bootstrap.yaml
+      service: bootstrap
+    networks:
+      - helix
+  #
+  # Database Layer
+  #
+  mysql: &mysql # port: 3306
+    extends:
+      file: database.layer.yaml
+      service: mysql
+    networks:
+      - helix
+    ports:
+      - "3306:3306"
+
+  #
+  # Logging and Monitoring Layer
+  #
+  fluentd: &fluentd # port: 24224
+    extends:
+      file: logging-monitoring.layer.yaml
+      service: fluentd
+    networks:
+      - helix
+    ports:
+      - "24224:24224"
+      - "24224:24224/udp" # For fluentd to receive logs
+
+  prometheus: &prometheus # port: 9090
+    extends:
+      file: logging-monitoring.layer.yaml
+      service: prometheus
+    networks:
+      - helix
+    ports:
+      - "9090:9090"
+
+  grafana: &grafana # port: 3000
+    extends:
+      file: logging-monitoring.layer.yaml
+      service: grafana
+    networks:
+      - helix
+    ports:
+      - "3000:3000"
+
+  elastic: &elastic # ports: 9200, 9300
+    extends:
+      file: logging-monitoring.layer.yaml
+      service: elastic
+    networks:
+      - helix
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+
+  kibana: &kibana # port: 5601
+    extends:
+      file: logging-monitoring.layer.yaml
+      service: kibana
+    networks:
+      - helix
+    ports:
+      - "5601:5601"
+
+  #
+  # Service Discovery
+  #
+  consul-bootstrap: &consul-bootstrap # ports: 8500, 8600
+    extends:
+      file: service-discovery.layer.yaml
+      service: consul-bootstrap
+    networks:
+      - helix
+
+  consul-server-1: &consul-server-1 # ports: 8300, 8500, 8600
+    extends:
+      file: service-discovery.layer.yaml
+      service: consul-server-1
+    networks:
+      - helix
+    ports:
+      - "8300:8300"
+      - "8500:8500"
+      - "8600:8600"
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:8500/v1/status/leader']
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  consul-server-2: &consul-server-2 # ports: 8300, 8500, 8600
+    extends:
+      file: service-discovery.layer.yaml
+      service: consul-server-2
+    networks:
+      - helix
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:8500/v1/status/leader']
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  consul-server-3: &consul-server-3 # ports: 8300, 8500, 8600
+    extends:
+      file: service-discovery.layer.yaml
+      service: consul-server-3
+    networks:
+      - helix
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:8500/v1/status/leader']
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  #
+  # API Gateway
+  #
+  krakend: &krakend # port: 8080
+    extends:
+      file: api-gateway.layer.yaml
+      service: krakend
+    networks:
+      - helix
+    ports:
+      - "8080:8080"
+
+  #
+  # Cache Layer
+  #
+  redis: &redis # port: 6379
+    extends:
+      file: cache.layer.yaml
+      service: redis
+    networks:
+      - helix
+    ports:
+      - "6379:6379"
+      - "8001:8001"
+
+  #
+  # Event Bus
+  #
+  zookeeper-1:
+    extends:
+      file: event-bus.layer.yaml
+      service: zookeeper-1
+    networks:
+      - helix
+    ports:
+      - "2181:2181"
+
+  kafka-1:
+    extends:
+      file: event-bus.layer.yaml
+      service: kafka-1
+    networks:
+      - helix
+    ports:
+      - "9092:9092"
+
+  kafka-2:
+    extends:
+      file: event-bus.layer.yaml
+      service: kafka-2
+    networks:
+      - helix
+    ports:
+      - "9093:9093"
+
+  kafka-3:
+    extends:
+      file: event-bus.layer.yaml
+      service: kafka-3
+    networks:
+      - helix
+    ports:
+      - "9094:9094"
+
+  #
+  # Security and Secret management
+  #
+  vault: &vault # port: 8200
+    extends:
+      file: security-secret-management.layer.yaml
+      service: vault
+    networks:
+      - helix
+    ports:
+      - "8200:8200"
+
+  #
+  # CD (Continuous Deployment) layer
+  #
+  argoCD: &argoCD # port: 8081
+    extends:
+      file: continuous-deployment.layer.yaml
+      service: argoCD
+    networks:
+      - helix
+    ports:
+      - "8081:8080"
+    depends_on:
+      - redis
+      - dex
+
+  dex: &dex # port: 5556
+    extends:
+      file: continuous-deployment.layer.yaml
+      service: dex
+    networks:
+      - helix
+    ports:
+      - '5556:5556'
+
+
+  #
+  # Services
+  #
+  lavalink: &lavalink
+    extends:
+      file: Services/lavalink.yaml
+      service: nginx-lb
+    networks:
+      - helix
+    ports:
+      - "2343:2343"

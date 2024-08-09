@@ -1,0 +1,33 @@
+# Use the official Fluentd base image
+FROM fluent/fluentd:v1.14-1
+
+# Use root account to use apk
+USER root
+
+# Install any Fluentd plugins you need
+RUN apk add --no-cache --update \
+  sudo build-base ruby-dev && \
+  sudo gem install \
+  fluent-plugin-elasticsearch \
+  fluent-plugin-prometheus \
+  fluent-plugin-rewrite-tag-filter && \
+  sudo gem sources --clear-all && \
+  apk del build-base ruby-dev
+
+# Copy the Fluentd configuration file
+COPY fluent.conf /fluentd/etc/fluent.conf
+
+# Set the correct permissions
+RUN chmod 644 /fluentd/etc/fluent.conf
+
+# Ensure Fluentd's log file is outputted to Docker logs
+ENV FLUENTD_OPT=""
+
+# Set the user to fluent
+USER fluent
+
+# Expose the necessary ports
+EXPOSE 24224 24224/udp
+
+# Start Fluentd
+CMD ["fluentd", "-c", "/fluentd/etc/fluent.conf", "-p", "/fluentd/plugins"]

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://www.krakend.io/schema/krakend.json",
+  "version": 3,
+  "name": "Helix Ai",
+  "timeout": "3000ms",
+  "cache_ttl": "300s",
+  "output_encoding": "json",
+  "echo_endpoint": false,
+  "sequential_start": true,
+  "debug_endpoint": true,
+  "tls": {
+    "public_key": "/path/to/cert.pem",
+    "private_key": "/path/to/key.pem"
+  }
+}
